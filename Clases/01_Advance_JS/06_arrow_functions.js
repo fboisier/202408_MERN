@@ -12,7 +12,7 @@ const saludar3 = (nombre) => {
     return "hola " + nombre;
 }
 
-const saludar4 = (nombre) => "hola " + nombre;
+const saludar4 = nombre => "hola " + nombre;
 
 
 const respuesta = saludar("FRANCISCO");
@@ -54,7 +54,7 @@ const square2 = function (x) {
 }
 console.log(square2(5));
 
-const square = (x) => x * x;
+const square = x => x * x;
 console.log(square(5));
 
 

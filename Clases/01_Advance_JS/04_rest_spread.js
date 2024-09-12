@@ -24,7 +24,9 @@ console.log("PERSONA", persona)
 console.log("PERSONA 2", persona2)
 
 
-const persona3 = {...persona};
+const persona3 = {...persona, edad:40, apodo: "Pancho" };
+
+console.log(persona3)
 persona3.edad = 40;
 console.log("PERSONA", persona)
 console.log("PERSONA 2", persona2)
@@ -36,4 +38,3 @@ animales.push("tigre")
 console.log(animales)
 
 const animales2 = [...animales, "tigre"];
-

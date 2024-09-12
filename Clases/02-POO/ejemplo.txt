@@ -1,0 +1,31 @@
+VEHICULO
+- marca
+- patente
+- modelo
+- ruedas
+- combustible
+- kilometraje
+- color
+- chasis
+
+- avanza()
+- gira()
+- detiene()
+- enciende()
+- apaga()
+
+
+AUTO (VEHICULO)
+* QUE TIENE EL AUTO(atributos)
+- puertas
+- caja_cambio
+
+
+* QUE HACE EL AUTO (metodos)
+- retrocede()
+
+MOTO (VEHICULO)
+- enciende()
+
+
+CAMION (VEHICULO)

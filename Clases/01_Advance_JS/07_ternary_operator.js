@@ -27,3 +27,9 @@ person.password === "passw0rd!"
 const genero = "M";
 const saludo = (genero === "F") ? "Sra." : "Sr.";
 console.log("SALUDO ES:", saludo)
+
+let contador = 1;
+contador += 1;
+contador++;
+
+console.log(contador);

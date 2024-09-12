@@ -118,9 +118,6 @@ console.log(firstAddress); // Output: { address: '1600 Pennsylvania Avenue', cit
 console.log(SecondAddress); // Output: { address: '221B Baker St.', city: 'London', zipcode: 'WC2N 5DU' }
 
 
-
-
-
 const personDos = {
     firstName: "Billy",
     lastName: "Bob",
