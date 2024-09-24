@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ES">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title> Mi primera app en React </title>
+    </head>
+    <body>
+        <div id="root"></div>
+        <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+        <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+        <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+        <script type="text/babel">
+            const MiApplicacion = () => {
+                const nombre = "Alex Miller";
+
+                return (
+                    <>
+                        <h1> Esta es mi primera aplicación de React </h1> 
+                        <h2> Bienvenido de vuelta {nombre} </h2>
+                        <Contenido />  
+                        <Contenido />
+                        <Contenido />
+                    </>
+                );
+            }
+
+            const Contenido = () => {
+                return(
+                    <div>
+                        <h2> El contenido cargará pronto </h2>
+                        <p> Gracias por tu visita </p>
+                    </div>
+                );
+            }
+
+            ReactDOM.render(<MiApplicacion />, document.querySelector('#root'));
+        </script>
+    </body>
+</html>
