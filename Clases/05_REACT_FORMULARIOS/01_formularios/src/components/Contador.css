@@ -1,0 +1,21 @@
+.tarjeta{
+    background-color: beige;
+    border: 1px solid black;
+    border-radius: 10px;
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.red{
+    background-color: tomato;
+}
+
+.green{
+    background-color: lightgreen;
+}
+
+.yellow{
+    background-color: lightgoldenrodyellow;
+}
