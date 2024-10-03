@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import CajaInput from "./CajaInput";
 
 const Formulario = () => {
@@ -8,14 +8,37 @@ const Formulario = () => {
     const [apellido, setApellido] = useState("");
     const [edad, setEdad] = useState(0);
 
+    const [errorFormulario, setErrorFormulario] = useState('');
+    const [cargando, setCargando] = useState(true);
+
 
     // MANEJADORES
     const handleSubmit = (e) => {
         e.preventDefault()
+
+
+        if(nombre.trim() === ""){
+            setErrorFormulario("El campo nombre es obligatorio")
+            return
+        }
+
+        if(apellido.trim() === ""){
+            setErrorFormulario("El campo apellido es obligatorio")
+            return
+        }
+
+        setErrorFormulario("")
+
         console.log("NOMBRE:", nombre)
         console.log("APELLIDO:", apellido)
         console.log("EDAD:", edad)
     }
+
+    useEffect(() => {
+        setTimeout(() => {
+            setCargando(false)
+        }, 2000)
+    }, [])
 
     const handleChange = (e) => {
         console.log(e.target.name, e.target.value)
@@ -42,9 +65,17 @@ const Formulario = () => {
 
     }
 
+    if (cargando){
+        return <h1>Cargando...</h1>
+    }
+
     // JSX
     return (
+
         <form onSubmit={handleSubmit}>
+
+            { errorFormulario && <div className="alert alert-danger">{errorFormulario}</div> }
+
             <CajaInput
                 etiqueta="Ingresa Nombre"
                 identificador="nombre"

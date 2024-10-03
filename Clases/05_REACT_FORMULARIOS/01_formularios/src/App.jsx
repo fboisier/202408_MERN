@@ -3,6 +3,7 @@ import Formulario from "./components/Formulario"
 import FormularioHook from "./components/FormularioHook"
 import FormularioObjeto from "./components/FormularioObjeto"
 import FormularioFormik from "./components/FormularioFormik"
+import Mapeadores from "./components/Mapeadores"
 
 const App = () => {
 
@@ -10,7 +11,16 @@ const App = () => {
 
   return (
     <div className="container">
-      <h1>Formularios</h1>
+      <h1>MAP</h1>
+      <hr />
+      <div className="row">
+        <div className="col-md-6">
+          <Mapeadores />
+        </div>
+      </div>
+
+
+      <h1 className="mt-5">Formularios</h1>
       <hr />
       <div className="row">
         <div className="col-md-6">

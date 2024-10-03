@@ -22,11 +22,11 @@
         ]
 
         // generarTarjeta = (persona) // se desestructurado.
-        const generarTarjeta = ({titulo, url}) => {
+        const generarTarjeta = ({titulo, url}, index) => {
             // { titulo: "Francisco", url: "https://github.com/fboisier" }
             return `
                 <div class="alert alert-primary" role="alert">
-                    Haz clic para ver el Github de <a href="${url}">${titulo}</a>
+                    Haz clic para ver el Github de <a href="${url}">${titulo} - (INDEX: ${index})</a>
                 </div>
             `;
         }
