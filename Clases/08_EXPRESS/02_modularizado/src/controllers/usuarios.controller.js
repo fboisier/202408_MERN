@@ -7,12 +7,14 @@ let usuarios = [
 
 const getUsuarios = (req, res) => {
 
-    const {nombre} = req.query;
+    const { nombre } = req.query;
+
+    console.log(nombre);
 
     const resultadoUsuarios = nombre ? usuarios.filter((usuario) => usuario.nombre.includes(nombre)) : usuarios;
 
     res.json({
-        usuarios:  resultadoUsuarios
+        usuarios: resultadoUsuarios
     });
 }
 
@@ -52,19 +54,20 @@ const putUsuarios = (req, res) => {
     });
 }
 
-const getDetalleUsuario =  (req, res) => {
+const getDetalleUsuario = (req, res) => {
     const id = req.params.id;
-    
     const usuario = usuarios.find((usuario) => usuario.id == id);
+    if (usuario) {
+        res.json({ usuario });
+    } else {
+        res.status(404).json({ message: 'Usuario no encontrado' });
+    }
+};
 
-    res.json({
-        usuario: usuario
-    });
-}
 
-const deleteUsuario =  (req, res) => {
+const deleteUsuario = (req, res) => {
     const id = req.params.id;
-    
+
     usuarios = usuarios.filter((usuario) => usuario.id != id);
 
     res.json({
