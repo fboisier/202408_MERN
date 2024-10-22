@@ -141,6 +141,7 @@ Regarding the course, the main communication channels will be Zoom and Discord a
   - [Class 8: React - Router](https://drive.google.com/drive/folders/1Dm7DtDaR4Gj4PQLhafTg0dl24uu989yC?usp=drive_link)
   - [Class 9: React - Express](https://drive.google.com/drive/folders/1oi3m3HgFbTSYUu03VuD-_GnOCfgPVTSf?usp=drive_link)
   - [Class 10: React - MongoDB](https://drive.google.com/drive/folders/1eF3iOdNsgpsfDEFupI31K-Fp26pLV7nd?usp=drive_link)
+  - [Class 11: React - Relations](https://drive.google.com/drive/folders/14HPkicbdvafKfZmS0NesFWbzu_3lz0bX?usp=drive_link)
 
 - **Tutorials (Guillermo)**
 
