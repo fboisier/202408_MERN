@@ -1,6 +1,11 @@
 
+import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 import { Usuario } from '../models/usuarios.model.js';
+import { config } from 'dotenv';
+config();
 
+const LLAVE_SECRETA = process.env.LLAVE_SECRETA || 'llave';
 
 const getUsuarios = async (req, res) => {
     try {
@@ -78,4 +83,40 @@ const deleteUsuario = async(req, res) => {
     }
 }
 
-export { getUsuarios, postUsuarios, putUsuarios, getDetalleUsuario, deleteUsuario };
+const loginUsuario = async (req, res) => {
+    try {
+
+        const { email, password } = req.body;
+        console.log("Email", email);
+        console.log("Password ", password);
+        const usuario = await Usuario.findOne({ email });
+
+        console.log("Usuario", usuario);
+        if (!usuario) {
+            res.status(400).json({ mensaje: "Usuario o contraseña incorrectos E" });
+            return;
+        }
+
+        const match = await bcrypt.compare(password, usuario.password);
+        if (!match) {
+            res.status(400).json({ mensaje: "Usuario o contraseña incorrectos P" });
+            return;
+        }
+        const datosToken = {
+            id: usuario._id,
+            email: usuario.email,
+            nombre: usuario.nombre,
+            apellido: usuario.apellido
+        }
+
+        const token = jwt.sign(datosToken, LLAVE_SECRETA, { expiresIn: '1h' });
+        res.json({ token });
+
+    }
+    catch (error) {
+        console.log(error);
+        res.status(500).json(error);
+    }
+}
+
+export { getUsuarios, postUsuarios, putUsuarios, getDetalleUsuario, deleteUsuario, loginUsuario };

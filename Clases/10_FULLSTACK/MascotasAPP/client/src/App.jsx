@@ -4,6 +4,7 @@ import Inicio from "./pages/Inicio"
 import NotFound from "./pages/NotFound"
 import Usuarios from "./pages/Usuarios"
 import UsuariosCrear from "./pages/UsuariosCrear"
+import UsuariosActualizar from "./pages/UsuariosActualizar"
 
 const App = () => {
 
@@ -16,6 +17,7 @@ const App = () => {
           <Route path="/" element={<Inicio />} />
           <Route path="/usuarios" element={<Usuarios />} />
           <Route path="/usuarios/crear" element={<UsuariosCrear />} />
+          <Route path="/usuarios/:identificador" element={<UsuariosActualizar />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
         

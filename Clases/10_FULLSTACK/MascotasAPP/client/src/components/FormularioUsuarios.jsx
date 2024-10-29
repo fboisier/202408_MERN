@@ -12,11 +12,11 @@ const formSchema = Yup.object().shape({
     email: Yup.string()
         .required("Campo Requerido")
         .email("Correo Electrónico Inválido"),
-    password: Yup.string()
-        .required("Campo Requerido"),
+    password: Yup.string(),
+    confirm_password: Yup.string()
 });
 
-const FormularioUsuarios = ({ initial, handleSubmit }) => {
+const FormularioUsuarios = ({ editando, initial, handleSubmit }) => {
     return (
         <Formik
             initialValues={initial}
@@ -77,19 +77,37 @@ const FormularioUsuarios = ({ initial, handleSubmit }) => {
                             className="field-error text-danger"
                         />
                     </div>
-                    <div className="form-group">
-                        <label htmlFor="password">Contraseña:</label>
-                        <Field
-                            className="form-control"
-                            name="password"
-                            type="password"
-                        />
-                        <ErrorMessage
-                            name="password"
-                            component="div"
-                            className="field-error text-danger"
-                        />
-                    </div>
+                    {!editando && (
+                        <>
+                            <div className="form-group">
+                                <label htmlFor="password">Contraseña:</label>
+                                <Field
+                                    className="form-control"
+                                    name="password"
+                                    type="password"
+                                />
+                                <ErrorMessage
+                                    name="password"
+                                    component="div"
+                                    className="field-error text-danger"
+                                />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Confirmar Contraseña:</label>
+                                <Field
+                                    className="form-control"
+                                    name="confirm_password"
+                                    type="password"
+                                />
+                                <ErrorMessage
+                                    name="confirm_password"
+                                    component="div"
+                                    className="field-error text-danger"
+                                />
+                            </div>
+                        </>
+                    )}
+
                     <button
                         className="btn btn-primary btn-block mt-2"
                         type="submit"
@@ -104,6 +122,7 @@ const FormularioUsuarios = ({ initial, handleSubmit }) => {
 };
 
 FormularioUsuarios.propTypes = {
+    editando: propTypes.bool.isRequired,
     initial: propTypes.object.isRequired,
     handleSubmit: propTypes.func.isRequired,
 };

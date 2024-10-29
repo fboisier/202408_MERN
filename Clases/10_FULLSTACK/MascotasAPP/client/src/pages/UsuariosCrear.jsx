@@ -36,7 +36,7 @@ const UsuariosCrear = () => {
         <>
             <h2>Crear Usuario</h2>
             <hr />
-            <FormularioUsuarios initial={initialValues} handleSubmit={handleCrearUsuario} />
+            <FormularioUsuarios editando={false} initial={initialValues} handleSubmit={handleCrearUsuario} />
         </>
 
     )

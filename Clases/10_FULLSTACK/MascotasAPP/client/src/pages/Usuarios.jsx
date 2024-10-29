@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react'
-import { getUsuarios } from '../api/usuariosServices'
+import { deleteUsuario, getUsuarios } from '../api/usuariosServices'
 import Cargando from '../components/Cargando'
 import { Link } from 'react-router-dom'
+import Swal from "sweetalert2"
 
 const Usuarios = () => {
 
@@ -16,6 +17,45 @@ const Usuarios = () => {
         }
         getData()
     }, [])
+
+    const handleConfirmarEliminar = (id) => {
+        Swal.fire({
+            title: "estás seguro?",
+            text: "Vas a eliminar el registro.",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonColor: "#d33",
+            confirmButtonText: "Si, Eliminar!",
+            cancelButtonText: "Cancelar",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                handleEliminarUsuarios(id)
+            }
+        });
+    }
+
+    const handleEliminarUsuarios = (id) => {
+        const saveData = async () => {
+            try {
+                await deleteUsuario(id)
+                Swal.fire({
+                    icon: 'success',
+                    title: 'Usuario eliminado',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+                setUsuarios(usuarios.filter(usuario => usuario._id !== id))
+            } catch (error) {
+                console.error(error)
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Algo salio mal...',
+                    text: error?.response?.data?.message,
+                })
+            }
+        }
+        saveData();
+    }
 
     if (cargando) {
         return <Cargando />
@@ -32,6 +72,7 @@ const Usuarios = () => {
                         <th>Apellido</th>
                         <th>Email</th>
                         <th>Edad</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -41,6 +82,15 @@ const Usuarios = () => {
                             <td>{usuario.apellido}</td>
                             <td>{usuario.email}</td>
                             <td>{usuario.edad}</td>
+                            <td>
+                                <Link className="btn btn-warning" to={`/usuarios/${usuario._id}`}>Editar</Link>
+                                <button
+                                    className="btn btn-danger ms-3"
+                                    onClick={() => {
+                                        handleConfirmarEliminar(usuario._id)
+                                    }}
+                                >Eliminar</button>
+                            </td>
                         </tr>
                     ))}
                 </tbody>
