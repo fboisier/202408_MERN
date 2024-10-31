@@ -29,6 +29,14 @@ const getUsuarios = async (req, res) => {
 
 const postUsuarios = async (req, res) => {
     try {
+        console.log("---------FBS---------")
+        console.log(req.usuario)
+        console.log(req.nombre_usuario)
+        console.log(req.apellido_usuario)
+        console.log(req.email_usuario)
+        console.log(req.tipo_usuario)
+        console.log("---------FBS---------")
+
         const usuario = await Usuario.create(req.body);
         res.json(usuario);
     } catch (error) {
@@ -106,11 +114,17 @@ const loginUsuario = async (req, res) => {
             id: usuario._id,
             email: usuario.email,
             nombre: usuario.nombre,
-            apellido: usuario.apellido
+            apellido: usuario.apellido,
+            tipo: usuario.tipo_usuario,
         }
 
-        const token = jwt.sign(datosToken, LLAVE_SECRETA, { expiresIn: '1h' });
-        res.json({ token });
+        const token = jwt.sign(datosToken, LLAVE_SECRETA, { expiresIn: '15m' });
+        res.cookie('authToken', token, { httpOnly: true, secure: true }).json(
+            { 
+                token,
+                datosToken,
+            }
+        );
 
     }
     catch (error) {
@@ -119,4 +133,8 @@ const loginUsuario = async (req, res) => {
     }
 }
 
-export { getUsuarios, postUsuarios, putUsuarios, getDetalleUsuario, deleteUsuario, loginUsuario };
+const logOut = async (req, res) => {
+    res.clearCookie('authToken').json({ mensaje: "Sesión cerrada" });
+}
+
+export { getUsuarios, postUsuarios, putUsuarios, getDetalleUsuario, deleteUsuario, loginUsuario, logOut };

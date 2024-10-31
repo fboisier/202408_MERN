@@ -1,6 +1,29 @@
+import { useContext } from "react"
 import { NavLink, Link } from "react-router-dom"
+import { UsuarioContext } from "../contexts/UsuarioContext"
+import { logout } from "../api/authServices"
 
 const Menu = () => {
+
+    const { usuario, setUsuario } = useContext(UsuarioContext)
+
+    const handleSalir = () => {
+        const getSalir = async () => {
+            try {
+                await logout()
+                localStorage.removeItem('usuario')
+                setUsuario(null)
+            } catch (error) {
+                console.error(error)
+            }
+        }
+        getSalir()
+    }
+
+    if (!usuario) {
+        return <></>
+    }
+
     return (
         <nav className="navbar navbar-expand-lg navbar-light bg-light">
             <div className="container-fluid">
@@ -17,6 +40,9 @@ const Menu = () => {
                             <NavLink className="nav-link" aria-current="page" to="/usuarios">Usuarios</NavLink>
                         </li>
                     </ul>
+                    <form className="d-flex">
+                        <button className="btn btn-outline-danger" type="button" onClick={handleSalir}>Salir</button>
+                    </form>
                 </div>
             </div>
         </nav>

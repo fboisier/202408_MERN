@@ -30,6 +30,12 @@ const usuarioSchema = new Schema({
         type: Number,
         required: true,
     },
+    tipo_usuario: {
+        type: String,
+        enum: ['admin', 'normal'],
+        default: 'normal',
+        required: false,
+    },
     password: {
         type: String,
         required: [true, 'La contraseña es obligatoria'],
