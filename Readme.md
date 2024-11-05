@@ -145,6 +145,8 @@ Regarding the course, the main communication channels will be Zoom and Discord a
   - [Class 12: React - FullStack](https://drive.google.com/drive/folders/1gDXk4zTYxKWGpjuUzUtvdYLcRmeflkFw?usp=drive_link)
   - [Class 13: React - FullStack CRUD - JWT](https://drive.google.com/drive/folders/1-rN0q0GvBhAGjI5zVWyQEltva9E4SB41?usp=drive_link)
   - [Class 14: React - FullStack Login/Logout](https://drive.google.com/drive/folders/1ck33GMU-JjO72IlwJnv12VJnAZwfOV2F?usp=drive_link)
+  - [Class 15: React - Deploy](https://drive.google.com/drive/folders/1hu8qXjgw11hPa0vOhPyEz5z0msgkPPTm?usp=drive_link)
+
 - **Tutorials (Guillermo)**
 
 
