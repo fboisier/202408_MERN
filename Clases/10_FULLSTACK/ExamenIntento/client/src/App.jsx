@@ -6,8 +6,10 @@ import Login from "./pages/Login"
 import PublicRoutes from "./components/PublicRoutes"
 import PrivateRoutes from "./components/PrivateRoutes"
 import Registro from "./pages/Registro"
+import SocketEjemplo from "./pages/SocketEjemplo"
 
 const App = () => {
+
 
   return (
     <>
@@ -27,6 +29,12 @@ const App = () => {
             <PrivateRoutes>
               <Menu />
               <Inicio />
+            </PrivateRoutes>
+          }/>
+          <Route path="/socket" element={
+            <PrivateRoutes>
+              <Menu />
+              <SocketEjemplo />
             </PrivateRoutes>
           }/>
           <Route path="*" element={<NotFound />} />

@@ -36,6 +36,9 @@ const Menu = () => {
                         <li className="nav-item">
                             <NavLink className="nav-link" aria-current="page" to="/">Inicio</NavLink>
                         </li>
+                        <li className="nav-item">
+                            <NavLink className="nav-link" aria-current="page" to="/socket">Socket</NavLink>
+                        </li>
                     </ul>
                     <form className="d-flex">
                         <button className="btn btn-outline-danger" type="button" onClick={handleSalir}>Salir</button>
