@@ -1,5 +1,5 @@
 
-import bcrypt from 'bcrypt';
+import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { Usuario } from '../models/usuarios.model.js';
 import { config } from 'dotenv';
@@ -105,7 +105,7 @@ const loginUsuario = async (req, res) => {
             return;
         }
 
-        const match = await bcrypt.compare(password, usuario.password);
+        const match = await bcryptjs.compare(password, usuario.password);
         if (!match) {
             res.status(400).json({ mensaje: "Usuario o contraseña incorrectos P" });
             return;

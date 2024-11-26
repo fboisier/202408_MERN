@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  mongodb:
+    image: mongo:latest
+    container_name: mascotas-app-mongodb
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: fboisier
+      MONGO_INITDB_ROOT_PASSWORD: sql123
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  server:
+    build:
+      context: ./server
+    container_name: mascotas-app-server
+    environment:
+      - PORT=8000
+      - MONGODB_URI=mongodb://fboisier:sql123@mongodb:27017/mascotas_app?authSource=admin
+      - BASE_DATOS=mascotas_app
+      - LLAVE_SECRETA=your_secret_key
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./server:/app
+    command: sh -c "npm install --legacy-peer-deps && npx nodemon server.js"
+    depends_on:
+      - mongodb
+
+
+  client:
+    build:
+      context: ./client
+    container_name: mascotas-app-client
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+
+    command: sh -c "npm install && npm run dev"
+    depends_on:
+      - server
+
+volumes:
+  mongo-data:
